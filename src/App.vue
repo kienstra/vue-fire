@@ -10,6 +10,9 @@
 
 <script>
 
+import { auth } from './firebase'
+console.log(auth)
+
 export default {
   name: 'App',
   components: {}
