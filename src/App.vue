@@ -9,7 +9,6 @@
 </template>
 
 <script>
-
 import { auth } from './firebase'
 console.log(auth)
 

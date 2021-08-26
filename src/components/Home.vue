@@ -14,11 +14,18 @@
 
 <script>
 import Login from './Login';
-import User from './User'
+import User from './User';
+import getPosts from '../composable/getPosts';
 export default {
   components: {
     Login,
     User,
-  }
+  },
+  setup() {
+    const { posts, error, load } = getPosts()
+    load()
+
+    return { posts, error }
+  },
 }
 </script>
