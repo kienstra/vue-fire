@@ -1,26 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <header>
+      <h1>Vue Voxer</h1>
+      <p>Real time voice chat</p>
+    </header>
+    <PostList :posts="posts" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { auth } from './firebase'
+import getPosts from './composable/getPosts';
+import PostList from './components/PostList'
+console.log(auth)
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { PostList },
+  setup() {
+    const { posts, error, load } = getPosts()
+    load()
+
+    return { posts, error }
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
